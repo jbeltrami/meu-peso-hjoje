@@ -18,6 +18,11 @@ export default async function NavMenu() {
         </li>
         <li>
           <AuthCheck>
+            <Link href="/meu-peso-hoje">Meu Peso Hoje</Link>
+          </AuthCheck>
+        </li>
+        <li>
+          <AuthCheck>
             <SignOutButton />
           </AuthCheck>
         </li>
