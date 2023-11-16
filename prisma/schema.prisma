@@ -48,6 +48,15 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  weights       Weight[]
+}
+
+model Weight {
+  id      Int      @id @default(autoincrement())
+  value   Float
+  date    DateTime @default(now())
+  userId  String
+  user    User @relation(fields: [userId], references: [id])
 }
 
 model VerificationToken {
