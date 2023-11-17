@@ -22,5 +22,12 @@ export default function DeleteWeightButton({ id }: Props) {
     startTransition(() => router.refresh());
   };
 
-  return <button onClick={deleteWeight}>Delete {id}</button>;
+  return (
+    <button
+      className="border-2 rounded-sm border-black p-1"
+      onClick={deleteWeight}
+    >
+      Deletar
+    </button>
+  );
 }

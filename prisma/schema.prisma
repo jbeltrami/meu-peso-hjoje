@@ -49,12 +49,21 @@ model User {
   accounts      Account[]
   sessions      Session[]
   weights       Weight[]
+  workouts      Workout[]
 }
 
 model Weight {
   id      Int      @id @default(autoincrement())
   value   Float
   date    DateTime @default(now())
+  userId  String
+  user    User @relation(fields: [userId], references: [id])
+}
+
+model Workout {
+  id      String @id @default(cuid())
+  value   Boolean
+  date    DateTime
   userId  String
   user    User @relation(fields: [userId], references: [id])
 }

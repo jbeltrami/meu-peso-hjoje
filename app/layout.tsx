@@ -19,9 +19,9 @@ export default function RootLayout({
   return (
     <AuthProvider>
       <html lang="en">
-        <body className={inter.className}>
+        <body className={`${inter.className} container mx-auto`}>
           <NavMenu />
-          {children}
+          <div className="block my-10">{children}</div>
         </body>
       </html>
     </AuthProvider>

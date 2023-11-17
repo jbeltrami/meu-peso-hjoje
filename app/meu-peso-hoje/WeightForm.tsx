@@ -43,7 +43,7 @@ export default function WeightForm() {
       <h2>Registre seu peso do dia:</h2>
       <form onSubmit={addWeight}>
         <label htmlFor="peso">Peso:</label>
-        <input type="number" name="peso" defaultValue={0} />
+        <input type="number" name="peso" step="0.1" defaultValue={0} />
         <p>Praticou atividade fisica ontem?</p>
         <label htmlFor="treino-sim">Sim:</label>
         <input type="radio" name="treino" id="treino-sim" value="sim" />
