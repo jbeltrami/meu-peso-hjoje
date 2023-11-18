@@ -24,7 +24,7 @@ export default function DeleteWeightButton({ id }: Props) {
 
   return (
     <button
-      className="border-2 rounded-sm border-black p-1"
+      className="appearance-none border-2 rounded-sm border-black p-1 text-teal-600 hover:bg-teal-900"
       onClick={deleteWeight}
     >
       Deletar

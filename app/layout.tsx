@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <AuthProvider>
       <html lang="en">
-        <body className={`${inter.className} container mx-auto`}>
+        <body className={`${inter.className} container mx-auto bg-gray-800`}>
           <NavMenu />
           <div className="block my-10">{children}</div>
         </body>

@@ -11,22 +11,29 @@ export function SignInButton() {
     return <>Loading...</>;
   }
 
-  if (status === "authenticated") {
+  if (status !== "authenticated") {
     return (
-      <Link href={`'/dashboard`}>
-        <Image
-          src={session.user?.image ?? "/mememan.webp"}
-          width={32}
-          height={32}
-          alt={"Your name"}
-        />
-      </Link>
+      <li>
+        <button
+          className="text-teal-300 hover:bg-teal-900 p-2"
+          onClick={() => signIn()}
+        >
+          Sign In
+        </button>
+      </li>
     );
   }
-
-  return <button onClick={() => signIn()}>Sign In</button>;
 }
 
 export function SignOutButton() {
-  return <button onClick={() => signOut()}>Sign Out</button>;
+  return (
+    <li>
+      <button
+        className="text-teal-300 hover:bg-teal-900 p-2"
+        onClick={() => signOut()}
+      >
+        Sign Out
+      </button>
+    </li>
+  );
 }

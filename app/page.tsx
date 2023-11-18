@@ -24,20 +24,20 @@ export default async function Home() {
 
   return (
     <main className={styles.main}>
-      <h1 className="text-6xl font-bold text-teal-600">
+      <h1 className="text-6xl font-bold text-teal-600 text-center mb-4">
         Bem vindo {session?.user?.name}
       </h1>
-      <p className="text-2xl font-bold text-teal-400 mb-4">
+      <p className="text-2xl font-bold text-teal-400 text-center mb-8">
         Veja seu historico abaixo:
       </p>
       <ul className="space-y-2">
         {formattedWeightList.map((e, i) => {
           return (
-            <li key={`weight-${i}`}>
+            <li key={`weight-${i}`} className="text-teal-600">
               {e.date} | {e.value} kg |{" "}
               <Link
                 href={`/meu-peso-hoje/editar/${e.id}`}
-                className="border-2 rounded-sm border-black p-1"
+                className="border-2 rounded-sm border-black p-1 text-teal-600 hover:bg-teal-900"
               >
                 Editar
               </Link>{" "}
