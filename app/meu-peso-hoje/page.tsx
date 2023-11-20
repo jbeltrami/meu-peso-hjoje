@@ -12,7 +12,6 @@ export default async function MeuPesoHoje() {
 
   return (
     <>
-      <h1>Meu Peso Hoje:</h1>
       <WeightForm />
     </>
   );
