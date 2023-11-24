@@ -64,7 +64,7 @@ export default function WeightForm() {
                 defaultValue={0}
               />
             </div>
-            <div className="mb-2">
+            {/* <div className="mb-2">
               <p className="text-teal-400 font-bold mb-2">
                 Praticou atividade fisica ontem?
               </p>
@@ -96,7 +96,7 @@ export default function WeightForm() {
                   value="nao"
                 />
               </div>
-            </div>
+            </div> */}
             <button
               className="bg-teal-700 hover:bg-teal-950 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"

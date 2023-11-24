@@ -1,9 +1,8 @@
 import { prisma } from "@/lib/prisma";
+import { authOptions } from "@/utils/authOptions";
 import { getServerSession } from "next-auth";
-import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { authOptions } from "./api/auth/[...nextauth]/route";
 import DeleteWeightButton from "./components/DeleteWeightButton";
 import dateFormatter from "./helper/dateFormatter";
 import styles from "./page.module.css";
