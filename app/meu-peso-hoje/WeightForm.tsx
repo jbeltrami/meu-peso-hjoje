@@ -1,9 +1,11 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function WeightForm() {
   const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const addWeight = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,6 +17,7 @@ export default function WeightForm() {
     };
 
     try {
+      setIsSubmitting(true);
       const res = await fetch("/api/weight", {
         method: "POST",
         body: JSON.stringify(body),
@@ -30,7 +33,9 @@ export default function WeightForm() {
       const data = await res.json();
       console.log("API response:", data); // Log the response for debugging
 
-      router.push("/");
+      setIsSubmitting(false);
+
+      return router.push("/");
     } catch (error) {
       if (error instanceof Error) {
         console.error("Error adding weight: ", error.message);
@@ -54,7 +59,7 @@ export default function WeightForm() {
                 className="block text-teal-400 text-sm font-bold mb-2"
                 htmlFor="peso"
               >
-                Peso:
+                Peso (em kg):
               </label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -64,45 +69,30 @@ export default function WeightForm() {
                 defaultValue={0}
               />
             </div>
-            {/* <div className="mb-2">
-              <p className="text-teal-400 font-bold mb-2">
-                Praticou atividade fisica ontem?
-              </p>
-              <div className="flex space-x-4">
-                <label
-                  className="block text-teal-400 text-sm font-bold mb-2"
-                  htmlFor="treino-sim"
+
+            {isSubmitting ? (
+              <>
+                <button
+                  className="bg-teal-700 hover:bg-teal-950 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:opacity-50"
+                  disabled
+                  type="submit"
                 >
-                  Sim:
-                </label>
-                <input
-                  className="rounded py-2 text-teal-300 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                  type="radio"
-                  name="treino"
-                  id="treino-sim"
-                  value="sim"
-                />
-                <label
-                  className="block text-teal-400 text-sm font-bold mb-2"
-                  htmlFor="treino-nao"
-                >
-                  Nao:
-                </label>
-                <input
-                  className="rounded py-2 text-teal-300 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                  type="radio"
-                  name="treino"
-                  id="treino-nao"
-                  value="nao"
-                />
-              </div>
-            </div> */}
-            <button
-              className="bg-teal-700 hover:bg-teal-950 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="submit"
-            >
-              Salvar
-            </button>
+                  Salvar
+                </button>
+
+                <p className="block text-teal-400 text-sm mt-2">
+                  Estamos processando seu envio.
+                  <br /> Voce sera redirecionado assim que terminarmos.
+                </p>
+              </>
+            ) : (
+              <button
+                className="bg-teal-700 hover:bg-teal-950 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="submit"
+              >
+                Salvar
+              </button>
+            )}
           </form>
         </div>
       </div>
